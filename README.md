@@ -16,10 +16,21 @@ ou
 >[!TIP]
 >Por Exemplo: o comando ***npm i typescript*** baixará a última versão do typescript disponível em https://www.npmjs.com/package/typescript?activeTab=versions
 
-## Inicializar um projeto TypeScript
+## TypeScript
 
+### Inicializar o projeto TypeScript
 >npx tsc --init
 
-## Transcrever códico em TypeScript para JavaScript
+### Configurar o projeto TypeScript
+
+Será criado um arquivo tsconfig.json que terá todas as configurações do typescript.
+
+>[!TIP]
+> Edite a propriedade **"outDir"** para apontar para um diretório diferente (*dist*, por exemplo). Com isso, ficará ***"outDir" => "./dist/"***
+
+### Transcrever códico em TypeScript para JavaScript
 
 >npx tsc
+
+>[!NOTE]
+>Os arquivos JavaScripts serão gerados a partir dos TypeScript do projeto no caminho apontado pela propriedade **outDir** do tsconfig.json.
