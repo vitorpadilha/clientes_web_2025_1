@@ -14,8 +14,7 @@ ou
 >O @versao pode ser suprimido e com isso baixará a última versão do projeto disponível em https://www.npmjs.com/
 
 >[!TIP]
->Exemplo: npm i typescript
->Baixará a última versão do typescript disponível em https://www.npmjs.com/package/typescript?activeTab=versions
+>Por Exemplo: o comando *npm i typescript* baixará a última versão do typescript disponível em https://www.npmjs.com/package/typescript?activeTab=versions
 
 ## Inicializar um projeto TypeScript
 
