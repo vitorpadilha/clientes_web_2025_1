@@ -15,6 +15,7 @@ ou
 
 >[!TIP]
 >Exemplo: npm i typescript
+>Baixará a última versão do typescript disponível em https://www.npmjs.com/package/typescript?activeTab=versions
 
 ## Inicializar um projeto TypeScript
 
