@@ -9,10 +9,10 @@
 ou 
 
 >npm i nome_do_pacote@versao
-
-PS: O @versao pode ser suprimido e com isso baixará a última versão do projeto disponível em https://www.npmjs.com/
-
-Ex: npm i typescript
+>[!NOTE]
+>O @versao pode ser suprimido e com isso baixará a última versão do projeto disponível em https://www.npmjs.com/
+>[!TIP]
+>Exemplo: npm i typescript
 
 ## Inicializar um projeto TypeScript
 
