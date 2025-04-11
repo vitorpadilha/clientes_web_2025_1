@@ -1,5 +1,6 @@
 "use strict";
 class Pessoa {
+    //Também existe o private e protected
     constructor(nome, sobrenome) {
         this.nome = nome;
         this.sobrenome = sobrenome;
@@ -30,7 +31,12 @@ var pessoa2 = {
 var pessoa3 = new Pessoa("Daniel", "Souza");
 for (var prop in pessoa2) {
     var key = prop;
-    console.log(typeof pessoa2[key]);
-    console.log("Nome Propriedade:", prop);
-    console.log("Valor:", pessoa2[key]);
+    if (typeof pessoa2[key] == "function") {
+        console.log("Nome Função:", prop);
+        console.log("Valor:", pessoa2[key]);
+    }
+    else {
+        console.log("Nome Propriedade:", prop);
+        console.log("Valor:", pessoa2[key]);
+    }
 }
