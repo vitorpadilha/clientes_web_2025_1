@@ -52,7 +52,7 @@ let limpaCampo = (campo: HTMLSelectElement) => {
     Array.from(children).forEach(function (child: Element) {
       var opt = child as HTMLOptionElement;
       if(opt.value != "")
-                campo.removeChild( child );
+        campo.removeChild( child );
       }
     );
 }
