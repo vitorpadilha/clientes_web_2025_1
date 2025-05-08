@@ -40,10 +40,11 @@ const estados: Estado[] = [
 
 document.addEventListener("DOMContentLoaded",(ev)=>{
     var campoPais: HTMLSelectElement = document.getElementById("pais") as HTMLSelectElement;
+    var campoEstado: HTMLSelectElement = document.getElementById("estado") as HTMLSelectElement;
     campoPais?.addEventListener("click", (ev2: MouseEvent)=>{
-        limpaCampo(campoPais);
+        limpaCampo(campoEstado);
         let valorPaisEscolhido: Pais = campoPais.value as Pais;
-        adicionaEstadosPais(campoPais, valorPaisEscolhido);
+        adicionaEstadosPais(campoEstado, valorPaisEscolhido);
     })
 });
 let limpaCampo = (campo: HTMLSelectElement) => {
