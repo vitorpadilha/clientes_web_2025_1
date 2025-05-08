@@ -42,7 +42,8 @@ document.addEventListener("DOMContentLoaded", (ev) => {
 });
 let limpaCampo = (campo) => {
     while (campo.firstChild) {
-        campo.removeChild(campo.firstChild);
+        if (campo.value != "")
+            campo.removeChild(campo.firstChild);
     }
 };
 let adicionaEstadosPais = (campo, pais) => {

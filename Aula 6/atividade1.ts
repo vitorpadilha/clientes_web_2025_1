@@ -49,7 +49,7 @@ document.addEventListener("DOMContentLoaded",(ev)=>{
 });
 let limpaCampo = (campo: HTMLSelectElement) => {
     while ( campo.firstChild ) {
-        if(campo.value != "")
+
         campo.removeChild( campo.firstChild );
     }
 }
