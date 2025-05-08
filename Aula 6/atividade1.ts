@@ -48,10 +48,13 @@ document.addEventListener("DOMContentLoaded",(ev)=>{
     })
 });
 let limpaCampo = (campo: HTMLSelectElement) => {
-    while ( campo.firstChild ) {
-
-        campo.removeChild( campo.firstChild );
-    }
+    let children: HTMLCollection = campo.children;
+    Array.from(children).forEach(function (child: Element) {
+      var opt = child as HTMLOptionElement;
+      if(opt.value != "")
+                campo.removeChild( child );
+      }
+    );
 }
 let adicionaEstadosPais = (campo: HTMLSelectElement, pais: Pais) => {
     for(let estado of estados) {

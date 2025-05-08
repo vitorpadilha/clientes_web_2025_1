@@ -41,10 +41,12 @@ document.addEventListener("DOMContentLoaded", (ev) => {
     });
 });
 let limpaCampo = (campo) => {
-    while (campo.firstChild) {
-        if (campo.value != "")
-            campo.removeChild(campo.firstChild);
-    }
+    let children = campo.children;
+    Array.from(children).forEach(function (child) {
+        var opt = child;
+        if (opt.value != "")
+            campo.removeChild(child);
+    });
 };
 let adicionaEstadosPais = (campo, pais) => {
     for (let estado of estados) {
