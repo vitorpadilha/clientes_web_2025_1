@@ -22,18 +22,18 @@
         </fieldset>
         <fieldset id="categorias">
             <legend>Categorias</legend>
-            <div>
+            <div id="categoria1">
                 <select name="categoria[]">
                     <option>-- Selecione a Categoria --</option>
                     <option value="Limpeza">Limpeza</option>
                     <option value="Bomboniere">Bomboniere</option>
                     <option value="Cereais">Cereais</option>
                 </select>
-                <div id="btnSubCategoria1">
+                <div id="btnSubCategoria1" name="btnSubCategoria">
 
                 </div>
-                <div id="btnSomaCategoria1">
-                    <button onclick="adicionaCategoria()">+</button>
+                <div id="btnSomaCategoria1" name="btnSomaCategoria">
+                    <button type="button" onclick="adicionaCategoria(1)">+</button>
                 </div>
             </div>
         </fieldset>
