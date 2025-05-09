@@ -45,21 +45,47 @@ let adicionaCategoria = (valor: number)=>{
     for(let childDiv of divWrapperBtnClicado?.getElementsByTagName("div")){
         let childDivElement = childDiv as HTMLElement;
         if(childDivElement.getAttribute("name") == "btnSomaCategoria") {
-            divWrapperBtnClicado.removeChild(childDiv);
+            childDivElement.removeChild(childDivElement.firstChild as ChildNode);
         }
-        else if(contadorPresentesAtual==1 && childDiv.getAttribute("name") == "btnSubCategoria") {
+        else if(contadorPresentesAtual==1 && childDivElement.getAttribute("name") == "btnSubCategoria") {
             let btnRemoveCategoriaInterno = document.createElement("button");
             btnRemoveCategoriaInterno.textContent="-";
             btnRemoveCategoriaInterno.type = "button";
             btnRemoveCategoriaInterno.addEventListener("click",(ev)=>{
                 removerCategoria(valor);
             });
-            childDiv.appendChild(btnRemoveCategoria);
+            childDivElement.appendChild(btnRemoveCategoriaInterno);
         }
     }
    contadorPresentesAtual++;
 }
 let removerCategoria = (valor: number)=>{
+    let fieldSetCategorias = document.getElementById("categorias") as HTMLFieldSetElement;
+    let divWrapperBtnClicado = document.getElementById("categoria"+valor) as HTMLDivElement;
+    fieldSetCategorias.removeChild(divWrapperBtnClicado);
+    if(contadorPresentesAtual==2) {
+        let divs: HTMLCollection = fieldSetCategorias.getElementsByTagName("div");
+        if(divs.length ==1) {
+            for(let divUnitaria of divs) {
+                for(let divWrapperBotao of divUnitaria.children ){
+                    if(divWrapperBotao.getAttribute("name") == "btnSubCategoria") {
+                        divWrapperBotao.removeChild(divWrapperBotao.firstChild as ChildNode);
+                    }
+                    else if(divWrapperBotao.getAttribute("name") == "btnSomaCategoria") {
+                            let btnAdicionaCategoriaInterno = document.createElement("button");
+                            btnAdicionaCategoriaInterno.textContent="+";
+                            btnAdicionaCategoriaInterno.type = "button";
+                            btnAdicionaCategoriaInterno.addEventListener("click",(ev)=>{
+                                adicionaCategoria(valor);
+                            });
+                            divWrapperBotao.appendChild(btnAdicionaCategoriaInterno);
+                    }
+                }
+            }
+            
+        }
+        
+    }
     contadorPresentesAtual--;
 }
 let adicionaOptions = (campo: HTMLSelectElement, valores: string[], textoOptionVazio: string) => {
