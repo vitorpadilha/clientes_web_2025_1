@@ -44,10 +44,13 @@ let adicionaCategoria = (valor: number)=>{
     let divWrapperBtnClicado = document.getElementById("categoria"+valor) as HTMLDivElement;
     for(let childDiv of divWrapperBtnClicado?.getElementsByTagName("div")){
         let childDivElement = childDiv as HTMLElement;
+        
         if(childDivElement.getAttribute("name") == "btnSomaCategoria") {
+            console.log(childDivElement.getAttribute("name"));
+            console.log(childDivElement.firstChild );
             childDivElement.removeChild(childDivElement.firstChild as ChildNode);
         }
-        else if(contadorPresentesAtual==1 && childDivElement.getAttribute("name") == "btnSubCategoria") {
+        if(contadorPresentesAtual==1 && childDivElement.getAttribute("name") == "btnSubCategoria") {
             let btnRemoveCategoriaInterno = document.createElement("button");
             btnRemoveCategoriaInterno.textContent="-";
             btnRemoveCategoriaInterno.type = "button";
@@ -71,7 +74,7 @@ let removerCategoria = (valor: number)=>{
                     if(divWrapperBotao.getAttribute("name") == "btnSubCategoria") {
                         divWrapperBotao.removeChild(divWrapperBotao.firstChild as ChildNode);
                     }
-                    else if(divWrapperBotao.getAttribute("name") == "btnSomaCategoria") {
+                    else if(divWrapperBotao.getAttribute("name") == "btnSomaCategoria" && divWrapperBotao.children.length==0) {
                             let btnAdicionaCategoriaInterno = document.createElement("button");
                             btnAdicionaCategoriaInterno.textContent="+";
                             btnAdicionaCategoriaInterno.type = "button";
