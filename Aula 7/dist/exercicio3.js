@@ -9,5 +9,19 @@ let pessoas = [{ nome: 'Ana', sobrenome: 'Souza', tel: { ddd: '22', numero: '999
 let pessoasDDD22 = pessoas.filter(e => e.tel.ddd == '22');
 console.log(pessoasDDD22);
 //b
-let pessoasConcatenadas = pessoas.map(e => e.nome + " " + e.sobrenome + " (" + e.tel.ddd + ") " + e.tel.numero);
+let pessoasConcatenadas = pessoas.map(e => e.nome + " " + e.sobrenome + " - (" + e.tel.ddd + ") " + e.tel.numero);
 console.log(pessoasConcatenadas);
+//c
+let pessoasNovas = pessoas.map(e => ({ nomeCompleto: e.sobrenome + ", " + e.nome, telefone: "(" + e.tel.ddd + ") " + e.tel.numero }));
+let pessoasNovas2 = pessoas.map(e => {
+    return { nomeCompleto: e.sobrenome + ", " + e.nome, telefone: "(" + e.tel.ddd + ") " + e.tel.numero };
+});
+//d
+let pessoasNovasFiltradas = pessoas.map(e => ({ nomeCompleto: e.sobrenome + ", " + e.nome, telefone: "(" + e.tel.ddd + ") " + e.tel.numero })).filter(e => e.nomeCompleto.startsWith("S"));
+let a = [1, 2, 3];
+let b = [4, 5, 6];
+[...a, ...b];
+let c = [...a, 5];
+const pessoa = { nome: "Vitor" };
+//pessoa.sobrenome ="Padilha";
+let pessoaModificada = Object.assign(Object.assign({}, pessoa), { sobrenome: "Padilha" });

@@ -24,5 +24,5 @@ let b = [4,5,6];
 [...a, ...b];
 let c = [...a, 5];
 const pessoa = {nome: "Vitor"};
-pessoa.sobrenome ="Padilha";
+//pessoa.sobrenome ="Padilha";
 let pessoaModificada = {...pessoa, sobrenome: "Padilha"};
