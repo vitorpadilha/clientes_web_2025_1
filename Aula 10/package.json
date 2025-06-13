@@ -1,0 +1,27 @@
+{
+  "name": "clientes_web_2025_1",
+  "version": "1.0.0",
+  "description": ">npm init",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vitorpadilha/clientes_web_2025_1.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/vitorpadilha/clientes_web_2025_1/issues"
+  },
+  "homepage": "https://github.com/vitorpadilha/clientes_web_2025_1#readme",
+  "dependencies": {
+    "form-data": "^4.0.3",
+    "node-fetch": "^3.3.2",
+    "typescript": "^5.8.3"
+  },
+  "devDependencies": {
+    "@types/node": "^24.0.1"
+  }
+}
