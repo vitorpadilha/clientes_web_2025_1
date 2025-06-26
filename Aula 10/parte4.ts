@@ -21,6 +21,18 @@ function cadastraPessoa(pessoa: Pessoa){
     });
 }
 document.addEventListener("DOMContentLoaded",(ev)=>{
+    let pessoaId = new URLSearchParams(window.location.search).get('id');
+    if(pessoaId) {
+        let pessoa: Promise<Pessoa[]> = carregarDadosPessoa(pessoaId);
+        pessoa.then(
+            (pessoas)=>{
+                (document.getElementById("nome") as HTMLInputElement).value = pessoas[0].nome;
+                (document.getElementById("sobrenome") as HTMLInputElement).value = pessoas[0].sobrenome;
+                if(pessoas[0].id)
+                (document.getElementById("idPessoa") as HTMLInputElement).value = pessoas[0].id?.toString();
+            }
+        );
+    }
     let bntCadastrar = document.getElementById("btnCadastrar");
     bntCadastrar?.addEventListener("click",(ev2)=>{
         ev2.preventDefault();
@@ -32,6 +44,15 @@ document.addEventListener("DOMContentLoaded",(ev)=>{
     });
 });
 
+
+function carregarDadosPessoa(pessoaId: string){
+return fetch(`http://localhost:3000/pessoas/id=${pessoaId}`, { method: "GET", headers: {
+    'Content-Type': 'application/json'
+   }}).then((pessoas)=>
+    {
+       return pessoas.json() as Promise<Pessoa[]>;
+    });
+}
 
 function alterarPessoa(pessoa: Pessoa){
 
