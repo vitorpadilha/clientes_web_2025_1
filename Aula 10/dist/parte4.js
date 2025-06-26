@@ -1,15 +1,12 @@
 "use strict";
 class Pessoa {
-    constructor(nome, sobrenome) {
+    constructor(id, nome, sobrenome) {
+        this.id = id;
         this.nome = nome;
         this.sobrenome = sobrenome;
     }
 }
 function cadastraPessoa(pessoa) {
-    const dados = new FormData();
-    dados.append("nome", pessoa.nome);
-    dados.append("sobrenome", pessoa.sobrenome);
-    console.log(pessoa);
     fetch("http://localhost:3000/pessoas", { method: "POST", headers: {
             'Content-Type': 'application/json'
         }, body: JSON.stringify({
@@ -25,7 +22,9 @@ document.addEventListener("DOMContentLoaded", (ev) => {
         ev2.preventDefault();
         let nome = document.getElementById("nome").value;
         let sobrenome = document.getElementById("sobrenome").value;
-        let pessoa = new Pessoa(nome, sobrenome);
+        let pessoa = new Pessoa(undefined, nome, sobrenome);
         cadastraPessoa(pessoa);
     });
 });
+function alterarPessoa(pessoa) {
+}

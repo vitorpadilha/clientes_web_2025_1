@@ -1,14 +1,15 @@
 
 class Pessoa {
+    id?: number;
     nome: string;
     sobrenome: string;
-    constructor(nome: string, sobrenome: string) {
+    constructor(id: number|undefined, nome: string, sobrenome: string) {
+        this.id = id;
         this.nome = nome;
         this.sobrenome = sobrenome;
     }
 }
 function cadastraPessoa(pessoa: Pessoa){
-    console.log(pessoa);
    fetch("http://localhost:3000/pessoas", { method: "POST", headers: {
     'Content-Type': 'application/json'
    }, body: JSON.stringify({
@@ -25,8 +26,13 @@ document.addEventListener("DOMContentLoaded",(ev)=>{
         ev2.preventDefault();
         let nome = (document.getElementById("nome") as HTMLInputElement).value;
         let sobrenome = (document.getElementById("sobrenome") as HTMLInputElement).value;
-        let pessoa = new Pessoa(nome, sobrenome);
+        let pessoa = new Pessoa(undefined, nome, sobrenome);
         cadastraPessoa(pessoa);
         
     });
 });
+
+
+function alterarPessoa(pessoa: Pessoa){
+
+}
