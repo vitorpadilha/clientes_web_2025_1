@@ -21,6 +21,7 @@ function cadastraPessoa(pessoa: Pessoa){
     });
 }
 document.addEventListener("DOMContentLoaded",(ev)=>{
+    let bntCadastrar = document.getElementById("btnCadastrar");
     let pessoaId = new URLSearchParams(window.location.search).get('id');
     if(pessoaId) {
         let pessoa: Promise<Pessoa[]> = carregarDadosPessoa(pessoaId);
@@ -32,15 +33,23 @@ document.addEventListener("DOMContentLoaded",(ev)=>{
                 (document.getElementById("idPessoa") as HTMLInputElement).value = pessoas[0].id?.toString();
             }
         );
+        if(bntCadastrar) {
+            bntCadastrar.textContent="Alterar";
+        }
     }
-    let bntCadastrar = document.getElementById("btnCadastrar");
+    
     bntCadastrar?.addEventListener("click",(ev2)=>{
         ev2.preventDefault();
         let nome = (document.getElementById("nome") as HTMLInputElement).value;
         let sobrenome = (document.getElementById("sobrenome") as HTMLInputElement).value;
         let pessoa = new Pessoa(undefined, nome, sobrenome);
-        cadastraPessoa(pessoa);
-        
+        if(pessoaId) {
+            pessoa.id=parseInt(pessoaId);
+            alterarPessoa(pessoa);
+        }
+        else {
+            cadastraPessoa(pessoa);
+        }
     });
 });
 
@@ -55,5 +64,14 @@ return fetch(`http://localhost:3000/pessoas?id=${pessoaId}`, { method: "GET", he
 }
 
 function alterarPessoa(pessoa: Pessoa){
-
+   fetch("http://localhost:3000/pessoas", { method: "PUT", headers: {
+    'Content-Type': 'application/json'
+   }, body: JSON.stringify({
+        id: pessoa.id,
+        nome: pessoa.nome,
+        sobrenome: pessoa.sobrenome
+   })}).then((pessoa)=>
+    {
+        console.log("Cadastrado com sucesso", pessoa);
+    });
 }
