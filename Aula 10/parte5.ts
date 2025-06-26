@@ -52,7 +52,7 @@ function removerPessoa(p: Pessoa) {
     'Content-Type': 'application/json'
    }}).then((pessoas)=>
     {
-       return pessoas.json() as Promise<Pessoa[]>;
+       return pessoas.json();
     });
 }
 

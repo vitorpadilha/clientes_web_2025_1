@@ -46,7 +46,7 @@ document.addEventListener("DOMContentLoaded",(ev)=>{
 
 
 function carregarDadosPessoa(pessoaId: string){
-return fetch(`http://localhost:3000/pessoas/id=${pessoaId}`, { method: "GET", headers: {
+return fetch(`http://localhost:3000/pessoas?id=${pessoaId}`, { method: "GET", headers: {
     'Content-Type': 'application/json'
    }}).then((pessoas)=>
     {

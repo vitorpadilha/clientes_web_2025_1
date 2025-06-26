@@ -36,7 +36,7 @@ function listasPessoas(filtro) {
     });
 }
 function removerPessoa(p) {
-    return fetch(`http://localhost:3000/pessoas/${p.nome}`, { method: "DELETE", headers: {
+    return fetch(`http://localhost:3000/pessoas/${p.id}`, { method: "DELETE", headers: {
             'Content-Type': 'application/json'
         } }).then((pessoas) => {
         return pessoas.json();
