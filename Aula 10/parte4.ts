@@ -9,8 +9,8 @@ class Pessoa {
         this.sobrenome = sobrenome;
     }
 }
-function cadastraPessoa(pessoa: Pessoa){
-   fetch("http://localhost:3000/pessoas", { method: "POST", headers: {
+async function cadastraPessoa(pessoa: Pessoa){
+   await fetch("http://localhost:3000/pessoas", { method: "POST", headers: {
     'Content-Type': 'application/json'
    }, body: JSON.stringify({
         nome: pessoa.nome,
@@ -54,24 +54,25 @@ document.addEventListener("DOMContentLoaded",(ev)=>{
 });
 
 
-function carregarDadosPessoa(pessoaId: string){
-return fetch(`http://localhost:3000/pessoas?id=${pessoaId}`, { method: "GET", headers: {
+async function carregarDadosPessoa(pessoaId: string): Promise<Pessoa[]>{
+   let response =  await fetch(`http://localhost:3000/pessoas?id=${pessoaId}`, { method: "GET", headers: {
     'Content-Type': 'application/json'
-   }}).then((pessoas)=>
-    {
-       return pessoas.json() as Promise<Pessoa[]>;
-    });
+   }});
+   return response.json();
 }
 
-function alterarPessoa(pessoa: Pessoa){
-   fetch("http://localhost:3000/pessoas", { method: "PUT", headers: {
-    'Content-Type': 'application/json'
-   }, body: JSON.stringify({
-        id: pessoa.id,
-        nome: pessoa.nome,
-        sobrenome: pessoa.sobrenome
-   })}).then((pessoa)=>
-    {
-        console.log("Cadastrado com sucesso", pessoa);
-    });
+async function alterarPessoa(pessoa: Pessoa){
+    try {
+        let response = await fetch("http://localhost:3000/pessoas", { method: "PUT", headers: {
+        'Content-Type': 'application/json'
+    }, body: JSON.stringify({
+            id: pessoa.id,
+            nome: pessoa.nome,
+            sobrenome: pessoa.sobrenome
+    })});
+    console.log("Alterado com sucesso", pessoa);
+    }
+    catch(e) {
+        console.log("Erro ao alterar pessoa");
+    }  
 }

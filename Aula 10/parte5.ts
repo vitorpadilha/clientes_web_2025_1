@@ -37,23 +37,18 @@ document.addEventListener("DOMContentLoaded",(ev)=>{
     )
 });
 
-function listasPessoas(filtro: string): Promise<Pessoa[]>{
-   return fetch(`http://localhost:3000/pessoas`, { method: "GET", headers: {
+async function listasPessoas(filtro: string): Promise<Pessoa[]>{
+   let retorno = await fetch(`http://localhost:3000/pessoas`, { method: "GET", headers: {
     'Content-Type': 'application/json'
-   }}).then((pessoas)=>
-    {
-       console.log(pessoas);
-       return pessoas.json() as Promise<Pessoa[]>;
-    });
+   }});
+   return retorno.json()
 }
 
-function removerPessoa(p: Pessoa) {
-    return fetch(`http://localhost:3000/pessoas/${p.id}`, { method: "DELETE", headers: {
+async function removerPessoa(p: Pessoa) {
+   let response = await fetch(`http://localhost:3000/pessoas/${p.id}`, { method: "DELETE", headers: {
     'Content-Type': 'application/json'
-   }}).then((pessoas)=>
-    {
-       return pessoas.json();
-    });
+   }});
+   return response.json();
 }
 
 function alterar(p: Pessoa) {
