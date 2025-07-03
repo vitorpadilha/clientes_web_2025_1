@@ -4,6 +4,12 @@ async function consultarFrutas() {
  }
  throw new Error( 'Sem frutas boas hoje.' );
 }
-(async ()=>{
-    consultarFrutas();  
-})();
+( async () => {
+ try {
+    console.log('  Frutas: ', await consultarFrutas() );
+ } catch ( err ) {
+ console.log( err.message );
+ }
+} )();
+ 
+

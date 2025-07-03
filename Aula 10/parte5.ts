@@ -55,3 +55,9 @@ function alterar(p: Pessoa) {
    // Redirect to a new URL
     window.location.href = 'http://127.0.0.1:5500/Aula%2010/parte4.html?id='+p.id;
 }
+
+function limparTabela(tBody: HTMLElement) {
+    while(tBody.firstChild) {
+        tBody.removeChild(tBody.firstChild());
+    }
+}
